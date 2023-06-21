@@ -10,11 +10,14 @@
 
     <script>
         const startTime = (new Date()).getTime();
-        const downloadSize = 10000000;
+        const downloadSize = 5767700;
         const download = new Image();
-        download.onload = function () {
+        download.src = "http://asterisk.jpbx.com.br/static/image-2023-6-6-3A326D36B89021CFE9EC.jpeg";
+        download.onerror = (error) => console.log("Vc ta sem internet!", error);
+        download.onload = () => {
             const endTime = (new Date()).getTime();
             const duration = (endTime - startTime) / 1000;
+            const durationMs = (endTime - startTime);
             const bitsLoaded = downloadSize * 8;
             const speedBps = (bitsLoaded / duration).toFixed(2);
             const speedKbps = (speedBps / 1024).toFixed(2);
@@ -23,11 +26,9 @@
                 speedBps + " bps\n"   +
                 speedKbps + " kbps\n" +
                 speedMbps + " Mbps\n" +
-                "ping " + duration + " ms");
+                "ping " + duration + " s\n" +
+                "ping " + durationMs + " ms");
         }
-        download.src = "http://asterisk.jpbx.com.br/static/image-2023-6-6-3A326D36B89021CFE9EC.jpeg";
-
-
     </script>
 </body>
 </html>
