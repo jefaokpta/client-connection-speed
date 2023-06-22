@@ -9,37 +9,36 @@
     <h1>Test connection speed</h1>
 
     <script>
-        const startTime = (new Date()).getTime();
-        const download = new Image();
-        download.src = "http://asterisk.jpbx.com.br/static/speed-test.png";
-        download.onerror = (error) => console.log("Vc ta sem internet!", error);
-        download.onload = () => {
-            const endTime = (new Date()).getTime();
-            const duration = (endTime - startTime) / 1000;
-            const durationMs = (endTime - startTime);
-
-            console.log("Sua latencia é: \n" +
-                duration + " s\n" +
-                durationMs + " ms");
-        }
-        // window.onload = function() {
-        //     testConnectionSpeed();
-        // }
-        // function testConnectionSpeed() {
-        //     const startTime = (new Date()).getTime();
-        //     // fetch("http://asterisk.jpbx.com.br:8000/api/agents")
-        //     fetch("https://wip.vipsolutions.com.br:8000/api/agents")
-        //         .then(response => {
-        //             const endTime = (new Date()).getTime();
-        //             const duration = (endTime - startTime) / 1000;
-        //             const durationMs = (endTime - startTime);
+        // const startTime = (new Date()).getTime();
+        // const download = new Image();
+        // download.src = "http://asterisk.jpbx.com.br/static/speed-test.png";
+        // download.onerror = (error) => console.log("Vc ta sem internet!", error);
+        // download.onload = () => {
+        //     const endTime = (new Date()).getTime();
+        //     const duration = (endTime - startTime) / 1000;
+        //     const durationMs = (endTime - startTime);
         //
-        //             console.log("Sua latencia é: \n" +
-        //                 duration + " s\n" +
-        //                 durationMs + " ms");
-        //         })
-        //         .catch(error => console.log("Vc ta sem internet!", error));
+        //     console.log("Sua latencia é: \n" +
+        //         duration + " s\n" +
+        //         durationMs + " ms");
         // }
+        window.onload = function() {
+            testConnectionSpeed();
+        }
+        function testConnectionSpeed() {
+            const startTime = (new Date()).getTime();
+            fetch("https://wip.vipsolutions.com.br:8000/api/agents")
+                .then(response => {
+                    const endTime = (new Date()).getTime();
+                    const duration = (endTime - startTime) / 1000;
+                    const durationMs = (endTime - startTime);
+
+                    console.log("Sua latencia é: \n" +
+                        duration + " s\n" +
+                        durationMs + " ms");
+                })
+                .catch(error => console.log("Vc ta sem internet!", error));
+        }
     </script>
 </body>
 </html>
